@@ -15,22 +15,21 @@ function [probabilidad, todas_las_probabilidades] = calcular_probabilidad_dos_fa
     % La probabilidad anterior es la probabilidad actual
     probabilidad_anterior = probabilidad_actual;
   
-    % Arrojo la moneda
+    % Comienzo con los experimentos generales
     experimento1 = my_mex_service(36628183);
     experimento2=my_mex_service(36628183);
       
-    % Actualizo la cantidad de tiradas
+    % Cuento la cantidad de casos que voy ejecutando
     total_de_casos = total_de_casos+ 1;
     
-    % Chequeo de qué lado cayó
+    % Chequeo si el experimento general fue exitoso
     if ((experimento1==0)&&(experimento2)==0)
       exitos = exitos + 1;
     end
     
     % Calculo la probabilidad actual
     probabilidad_actual = exitos / total_de_casos;
-    
-    % Esto es solamente para poder hacer el grafico ----------------------------
+    % Grafico las probabilidades
     todas_las_probabilidades = cat(1, todas_las_probabilidades, probabilidad_actual);
     % --------------------------------------------------------------------------
         
@@ -38,7 +37,7 @@ function [probabilidad, todas_las_probabilidades] = calcular_probabilidad_dos_fa
   
   % Devuelvo la probabilidad actual
   probabilidad = probabilidad_actual;
-
+  
 end
 
 
